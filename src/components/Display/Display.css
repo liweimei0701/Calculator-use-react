@@ -1,0 +1,10 @@
+#display {
+  color: #fff;
+  font-size: 20px;
+  text-align: right;
+}
+.preResult,
+.result {
+  height: 25px;
+  margin-bottom: 5px;
+}
