@@ -11,7 +11,7 @@ const numbers = [
   },
   {
     id:'multiply',
-    name:'X'
+    name:'*'
   },
   {
     id:'seven',
@@ -86,7 +86,7 @@ export default class NumberBox extends React.Component {
   }else if (id === 'one'||id === 'two'|| id === 'three'|| id === 'four'|| id === 'five'|| id === 'six'|| id === 'seven'|| id === 'eight'|| id === 'nine' || id === 'dot'){
      justDisplay(btnName)
    }else if(id === 'add'|| id === 'substract' || id === 'multiply' || id === 'devide'){
-     methodDisplay(id)
+     methodDisplay(btnName)
    }else if(id === 'equals'){
      equalsDisplay()
      hasEquals = true

@@ -25,14 +25,19 @@ export default class App extends React.Component {
   }
   clearDisplay = (id,btnName) =>{
     // console.log('执行了');
-    let {preResult} = this.state
+    let {preResult,Result} = this.state
     if(id === 'clear'){
       this.setState({
         preResult:'',
         Result:0
     })
     }else if (id === 'e') {
-      preResult = ''
+      if(btnName === '+' || btnName === '-' || btnName === '*' || btnName === '/') {
+        preResult = Result
+      }else {
+        preResult = ''
+      }
+      // preResult = ''
       // Result = 0
       this.setState({
         preResult:preResult + btnName,
@@ -41,32 +46,15 @@ export default class App extends React.Component {
     }
    
   }
-  methodDisplay = (id) => {
-    let {preResult,Result} = this.state
-    let result = Result
-    switch(id){
-      case 'add':
-        result = '+'
-        break;
-      case 'substract':
-        result = '-'
-        break;
-      case 'devide':
-        result = '/'
-        break;
-      case 'multiply':
-        result = '*'
-        break;
-        default: 
-        result = ''
-    }
+  methodDisplay = (btnName) => {
+    let {preResult} = this.state
     let char = preResult.charAt(preResult.length-1)
     if(char === '+' || char === '-' || char === '*' || char === '/') {
       preResult = preResult.substr(0,preResult.length-1)
     }
     this.setState({
-      preResult:preResult + result,
-      Result:result
+      preResult:preResult + btnName,
+      Result:btnName
     })
   }
   equalsDisplay = () => {
@@ -77,7 +65,7 @@ export default class App extends React.Component {
       preResult = ''
     }
     if(preResult === ''){
-      return result = "NaN"
+      return result = 'NaN'
     }
     let char = preResult.charAt(preResult.length-1)
     if(char === '+' || char === '-' || char === '*' || char === '/') {
