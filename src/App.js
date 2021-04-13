@@ -25,6 +25,10 @@ export default class App extends React.Component {
   }
   clearDisplay = (id,btnName) =>{
     // console.log('执行了');
+    // 这里我加了另外一个id进行判断,当有结果的时候让id='e',在clearDisplay函数里来进行判断,
+    // 如果是'clear',那就setState让其为初始值,
+    // 如果id='e', 那就手动preResult='', Result = 0,然后再来执行setState让其显示对应的btnName.(因为不能同时执行两个setState, 原因以后再研究)
+    // 并且在id= 'e'的情况里还要排除四种运算符的情况,如果是运算符,先将结果Result存在preResult中,再来更新btnName.
     let {preResult,Result} = this.state
     if(id === 'clear'){
       this.setState({
