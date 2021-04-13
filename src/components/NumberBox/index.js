@@ -70,20 +70,29 @@ const numbers = [
     name:'.'
   }
 ]
-
+var hasEquals = false
 export default class NumberBox extends React.Component {
- handleClick = (id,btnName) =>  {
+ handleClick = async (id,btnName) =>  {
   //  console.log(id);
-  const {justDisplay,clearDisplay,methodDisplay,equalsDisplay} = this.props
+  const {justDisplay,clearDisplay,methodDisplay,equalsDisplay} = this.props 
+  if(hasEquals) {
+    id === 'clear'? id = 'clear' : id = 'e'
+    hasEquals = false
+  }
    if(id === "clear"){
-     clearDisplay()
-   }else if (id === 'one'||id === 'two'|| id === 'three'|| id === 'four'|| id === 'five'|| id === 'six'|| id === 'seven'|| id === 'eight'|| id === 'nine' || id === 'dot'){
+     clearDisplay(id,btnName)
+   }else if (id === 'e'){
+    clearDisplay(id,btnName)
+  }else if (id === 'one'||id === 'two'|| id === 'three'|| id === 'four'|| id === 'five'|| id === 'six'|| id === 'seven'|| id === 'eight'|| id === 'nine' || id === 'dot'){
      justDisplay(btnName)
    }else if(id === 'add'|| id === 'substract' || id === 'multiply' || id === 'devide'){
      methodDisplay(id)
    }else if(id === 'equals'){
      equalsDisplay()
+     hasEquals = true
+    //  console.log(hasEquals);   
    }
+  
   }
   render(){
     return (
