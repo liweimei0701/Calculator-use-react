@@ -3,7 +3,7 @@ import './NumberBox.css'
 const numbers = [
   {
     id:'clear',
-    name:'AC'
+    name:'AD'
   },
   {
     id:'devide',
